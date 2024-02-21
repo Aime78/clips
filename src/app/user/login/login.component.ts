@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  isPasswordVisible = false;
 
+  credentials ={
+    email:'',
+    password:''
+  }
+  showPassword(){
+    this.isPasswordVisible = !this.isPasswordVisible
+  }
 }
