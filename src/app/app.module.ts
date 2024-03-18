@@ -10,6 +10,8 @@ import { environment } from '../environments/environment.development';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { VideoModule } from './video/video.module';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 @NgModule({
   declarations: [AppComponent, NavComponent],
   imports: [
@@ -20,6 +22,7 @@ import { VideoModule } from './video/video.module';
     AngularFirestoreModule,
     VideoModule,
     AppRoutingModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
