@@ -35,4 +35,5 @@ export class ModalService {
       modal.visible = !modal.visible;
     }
   }
+  
 }

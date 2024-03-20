@@ -13,6 +13,7 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges  {
 
   @Input() activeClip: IClip | null = null
   inSubmission = false
+  type = ''
   showAlert = false
   alertColor = 'blue'
   alertMsg = 'Please wait! Updating clip.'
@@ -30,6 +31,7 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges  {
   constructor(private modal: ModalService, private clipService: ClipService){}
 
   ngOnInit(): void {
+    
     this.modal.register('editClip')
   }
 
@@ -53,23 +55,26 @@ export class EditComponent implements OnInit, OnDestroy, OnChanges  {
     this.showAlert = true
     this.alertColor = 'blue'
     this.alertMsg = 'Please wait! Updating clip.'
+    this.type = 'notification'
 
     try {
       
       await this.clipService.updateClip(this.clipID.value, this.title.value)
+      this.inSubmission = false
+      this.alertColor = 'green'
+      this.alertMsg = 'Success!'
+      this.type ='success'
     } catch (error) {
       this.inSubmission = false
       this.alertColor = 'red'
       this.alertMsg = 'Something went wrong. Please try again later.'
+      this.type = 'error'
       return
     }
 
     this.activeClip.title = this.title.value
     this.update.emit(this.activeClip)
 
-    this.inSubmission = false
-    this.alertColor = 'green'
-    this.alertMsg = 'Success!'
 
   }
 }

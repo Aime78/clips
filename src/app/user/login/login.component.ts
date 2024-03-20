@@ -12,6 +12,7 @@ export class LoginComponent {
   alertMsg = 'Please wait! We are logging you in.';
   alertColor = 'blue';
   inSubmission = false;
+  type = ''
 
   credentials = {
     email: '',
@@ -29,6 +30,7 @@ export class LoginComponent {
     this.alertMsg = 'Please wait! We are logging you in.';
     this.alertColor = 'blue';
     this.inSubmission = true;
+    this.type = 'notification'
 
     try {
       await this.auth.signInWithEmailAndPassword(
@@ -41,10 +43,12 @@ export class LoginComponent {
       this.alertMsg = 'An unexpected error occurred. Please try again later.';
       this.alertColor = 'red';
       this.inSubmission = false;
+      this.type = 'error'
       return;
     }
 
     this.alertMsg = 'Success! You are now logged in.';
     this.alertColor = 'green';
+    this.type ='success'
   }
 }

@@ -9,8 +9,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment.development';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { VideoModule } from './video/video.module';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ParentModule } from './parent.module';
 
 @NgModule({
   declarations: [AppComponent, NavComponent],
@@ -20,9 +20,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    VideoModule,
     AppRoutingModule,
     AngularFireStorageModule,
+    ParentModule
   ],
   providers: [],
   bootstrap: [AppComponent],

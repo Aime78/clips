@@ -12,6 +12,7 @@ import { EmailTaken } from '../validators/email-taken';
 })
 export class RegisterComponent {
   inSubmission = false;
+  type = ''
   name = new FormControl('', [Validators.required, Validators.minLength(3)]);
   email = new FormControl('', [Validators.required, Validators.email], [this.emailTaken.validate]);
   age = new FormControl<number | null>(null, [
@@ -63,6 +64,7 @@ export class RegisterComponent {
     this.alertMsg = 'Please wait! Your account is being created.';
     this.alertColor = 'blue';
     this.inSubmission = true;
+    this.type = 'notification'
 
     try {
       await this.auth.createUser(this.registerForm.value as IUser);
@@ -72,10 +74,12 @@ export class RegisterComponent {
       this.alertMsg = 'An unexpected error occurred. Please try again later.';
       this.alertColor = 'red';
       this.inSubmission = false;
+      this.type = 'error'
       return;
     }
 
     this.alertMsg = 'Success! Your account has been created.';
     this.alertColor = 'green';
+    this.type ='success'
   }
 }
