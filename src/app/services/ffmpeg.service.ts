@@ -14,9 +14,9 @@ export class FfmpegService {
   }
 
   async init() {
-    if (this.isReady) {
-      return;
-    }
+    // if (this.isReady) {
+    //   return;
+    // }
 
     await this.ffmpeg.load();
 
@@ -54,23 +54,6 @@ export class FfmpegService {
         `output_0${second}.png`
       );
     }
-
-    // seconds.forEach((second) => {
-    //   commands.push(
-    //     // Input
-    //     '-i',
-    //     file.name,
-    //     // Output Options
-    //     '-ss',
-    //     `00:00:0${second}`,
-    //     '-frames:v',
-    //     '1',
-    //     '-filter:v',
-    //     'scale=510:-1',
-    //     // Output
-    //     `output_0${second}.png`
-    //   );
-    // });
 
     await this.ffmpeg.run(...commands);
     const screenshoots: string[] = [];
